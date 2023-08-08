@@ -105,181 +105,197 @@ using System.Threading;
 
 namespace Program
 {
-    class Node
+    class Program1
     {
-        public Node parent = null;
-        public int row;
-        public int column;
-        public int cost;
-        public bool start = false;
-        public bool goal = false;
-        public bool solid = false;
-        public bool open = false;
-        public bool closed = false;
-
-        public Node(int r, int c)
+        class Node
         {
-            row = r;
-            column = c;
+            public Node parent = null;
+            public int row;
+            public int column;
+            public int cost;
+            public bool start = false;
+            public bool goal = false;
+            public bool solid = false;
+            public bool open = false;
+            public bool closed = false;
+
+            public Node(int r, int c)
+            {
+                row = r;
+                column = c;
+            }
+
         }
 
-    }
-
-    class astar
-    {
-        Node[][] map = new Node[15][];
-        List<Node> opened = new List<Node>();
-        List<Node> closed = new List<Node>();
-
-        public void initializemap()
+        static Node[][] map = new Node[15][];
+        class astar
         {
-            for (int i = 0; i < map.Length; i++)
-            {
-                map[i] = new Node[15]; // Initialize each row
 
-                for (int j = 0; j < 15; j++)
+            List<Node> opened = new List<Node>();
+            List<Node> closed = new List<Node>();
+
+            public void initializemap()
+            {
+                for (int i = 0; i < map.Length; i++)
                 {
-                    map[i][j] = new Node(i, j); // Initialize each node in the row
-                }
-            }
-            map[3][3].solid = true;
-            map[4][5].solid = true;
-        }
-        public int getCost(Node node, Node start, Node goal)
-        {
-            return Math.Abs(node.row - start.row) + Math.Abs(node.column - start.column) + Math.Abs(node.row - goal.row) + Math.Abs(node.column - goal.column);
-        }
+                    map[i] = new Node[15]; // Initialize each row
 
-        public void calculateCost(Node start, Node goal)
-        {
-            for (int i = 0; i < map.Length; i++)
-            {
-                for (int j = 0; j < map[0].Length; j++)
-                {
-                    map[i][j].cost = getCost(map[i][j], start, goal);
-                    map[i][j].row = i;
-                    map[i][j].column = j;
-                }
-            }
-        }
-        public void openNode(Node node, Node curr)
-        {
-
-            if (!node.open || !node.solid || !node.closed)
-            {
-                node.open = true;
-                node.closed = false;
-                node.parent = curr;
-                opened.Add(node);
-                Console.WriteLine("Opened node: " + node.row + "," + node.column);
-            }
-
-        }
-        public void closeNode(Node node)
-        {
-            if (node.open || !node.solid || !node.closed)
-            {
-                node.closed = true;
-                opened.Remove(node);
-                closed.Add(node);
-                Console.WriteLine("___Closed node: " + node.row + "," + node.column);
-
-            }
-        }
-        public Node getMincost()
-        {
-            if (opened.Count == 0)
-                return null;
-
-            Node min_value = opened[0];
-
-            for (int i = 1; i < opened.Count; i++)
-            {
-                if (opened[i].cost < min_value.cost)
-                {
-                    min_value = opened[i];
-                }
-            }
-
-            return min_value;
-        }
-
-
-        public void find_neighbours(Node node)
-        {
-            int x = node.row;
-            int y = node.column;
-            for (int i = (x - 1 < 0 ? 0 : x - 1); i < (x + 2 > 15 ? 15 : x + 2); i++)
-            {
-                for (int j = (y - 1 < 0 ? 0 : y - 1); j < (y + 2 > 15 ? 15 : y + 2); j++)
-                {
-                    if (map[i][j].open == false)
+                    for (int j = 0; j < 15; j++)
                     {
-                        openNode(map[i][j], node);
+                        map[i][j] = new Node(i, j); // Initialize each node in the row
+                    }
+                }
+                map[3][3].solid = true;
+                map[0][1].solid = true;
+            }
+            public int getCost(Node node, Node start, Node goal)
+            {
+                return Math.Abs(node.row - start.row) + Math.Abs(node.column - start.column) + Math.Abs(node.row - goal.row) + Math.Abs(node.column - goal.column);
+            }
+
+            public void calculateCost(Node start, Node goal)
+            {
+                for (int i = 0; i < map.Length; i++)
+                {
+                    for (int j = 0; j < map[0].Length; j++)
+                    {
+                        map[i][j].cost = getCost(map[i][j], start, goal);
+                        map[i][j].row = i;
+                        map[i][j].column = j;
                     }
                 }
             }
-        }
-        public async void back_track(Node node)
-        {
-            HashSet<Node> visitedNodes = new HashSet<Node>();
-            Stack<Node> path = new Stack<Node>();
-
-            while (node != null && !visitedNodes.Contains(node))
+            public void openNode(Node node, Node curr)
             {
-                path.Push(node);
-                visitedNodes.Add(node);
-                node = node.parent;
-            }
-            int path_length = path.Count;
-            Console.WriteLine("length of the shortest path: " + path_length);
-            foreach (var item in path)
-            {
-                Thread.Sleep(300);
-                Console.WriteLine(item.row + "," + item.column);
-            }
-        }
 
-        public void aStar(Node start, Node goal, Node curr)
-        {
-            initializemap();
-            calculateCost(start, goal);
-            opened.Add(curr);
-
-            while (opened.Count > 0)
-            {
-                curr = getMincost();
-                if (curr.row == goal.row && curr.column == goal.column)
+                if (!node.open || !node.solid || !node.closed)
                 {
-                    Console.WriteLine("End Reached");
-                    back_track(curr);
-                    return; // Found the goal, terminate the algorithm
+                    node.open = true;
+                    node.closed = false;
+                    node.parent = curr;
+                    opened.Add(node);
+                    //Console.WriteLine("Opened node: " + node.row + "," + node.column);
                 }
-                else
+
+            }
+            public void closeNode(Node node)
+            {
+                if (node.open || !node.solid || !node.closed)
                 {
-                    find_neighbours(curr);
-                    closeNode(curr);
+                    node.closed = true;
+                    opened.Remove(node);
+                    closed.Add(node);
+                    //Console.WriteLine("___Closed node: " + node.row + "," + node.column);
+
                 }
             }
+            public Node getMincost()
+            {
+                if (opened.Count == 0)
+                    return null;
 
-            Console.WriteLine("No valid path to the goal.");
+                Node min_value = opened[0];
+
+                for (int i = 1; i < opened.Count; i++)
+                {
+                    if (opened[i].cost < min_value.cost)
+                    {
+                        min_value = opened[i];
+                    }
+                }
+
+                return min_value;
+            }
+
+
+            public void find_neighbours(Node node)
+            {
+                int x = node.row;
+                int y = node.column;
+                for (int i = (x - 1 < 0 ? 0 : x - 1); i < (x + 2 > 15 ? 15 : x + 2); i++)
+                {
+                    for (int j = (y - 1 < 0 ? 0 : y - 1); j < (y + 2 > 15 ? 15 : y + 2); j++)
+                    {
+                        if (map[i][j].open == false && map[i][j].solid==false)
+                        {
+                            openNode(map[i][j], node);
+                        }
+                    }
+                }
+            }
+            public void back_track(Node node)
+            {
+                HashSet<Node> visitedNodes = new HashSet<Node>();
+                Stack<Node> path = new Stack<Node>();
+
+                while (node != null && !visitedNodes.Contains(node))
+                {
+                    path.Push(node);
+                    visitedNodes.Add(node);
+                    node = node.parent;
+                }
+                int path_length = path.Count;
+                Console.WriteLine("length of the shortest path: " + path_length);
+                foreach (var item in path)
+                {
+                    Thread.Sleep(300);
+                    Console.WriteLine(item.row + "," + item.column);
+                }
+            }
+
+            public void aStar(Node start, Node goal, Node curr)
+            {
+
+                calculateCost(start, goal);
+                opened.Add(curr);
+
+                while (opened.Count > 0)
+                {
+                    curr = getMincost();
+                    if (curr.row == goal.row && curr.column == goal.column)
+                    {
+                        Console.WriteLine("End Reached");
+                        back_track(curr);
+                        return; // Found the goal, terminate the algorithm
+                    }
+                    else
+                    {
+                        find_neighbours(curr);
+                        closeNode(curr);
+                    }
+                }
+
+                Console.WriteLine("No valid path to the goal.");
+            }
         }
-    }
-    class Program
-    {
-
-        static void Main(string[] args)
+        class Program
         {
-            astar x = new astar();
-            Node start_node = new Node(10, 7);
-            Node end_node = new Node(2, 4);
-            Node curr_node = start_node;
 
-            x.aStar(start_node, end_node, curr_node);
+            static void Main(string[] args)
+            {
+                //Actor 1
+                astar x = new astar();
+                x.initializemap();
+                Node start_node = new Node(0, 0);
+                Node end_node = new Node(2, 4);
+                Node curr_node = start_node;
 
+                x.aStar(start_node, end_node, curr_node);
+
+                //Actor 2
+                astar y = new astar();
+                y.initializemap();
+                Node start_node2 = new Node(1, 1);
+                Node end_node2 = new Node(4, 4);
+                Node curr_node2 = start_node;
+
+                y.aStar(start_node2, end_node2, curr_node2);
+
+
+            }
         }
-    }
 
+    }
 }
 
 /// DFS

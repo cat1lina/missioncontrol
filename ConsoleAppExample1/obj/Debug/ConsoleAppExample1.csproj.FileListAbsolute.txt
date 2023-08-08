@@ -6,3 +6,11 @@ C:\Users\dilav\OneDrive\Desktop\internship\31.07\ConsoleAppExample1\bin\Debug\Co
 C:\Users\dilav\OneDrive\Desktop\internship\31.07\ConsoleAppExample1\bin\Debug\ConsoleAppExample1.pdb
 C:\Users\dilav\OneDrive\Desktop\internship\31.07\ConsoleAppExample1\obj\Debug\ConsoleAppExample1.exe
 C:\Users\dilav\OneDrive\Desktop\internship\31.07\ConsoleAppExample1\obj\Debug\ConsoleAppExample1.pdb
+C:\Users\dilav\OneDrive\Desktop\internship\31.07\missioncontrol\missioncontrol\ConsoleAppExample1\bin\Debug\ConsoleAppExample1.exe.config
+C:\Users\dilav\OneDrive\Desktop\internship\31.07\missioncontrol\missioncontrol\ConsoleAppExample1\bin\Debug\ConsoleAppExample1.exe
+C:\Users\dilav\OneDrive\Desktop\internship\31.07\missioncontrol\missioncontrol\ConsoleAppExample1\bin\Debug\ConsoleAppExample1.pdb
+C:\Users\dilav\OneDrive\Desktop\internship\31.07\missioncontrol\missioncontrol\ConsoleAppExample1\obj\Debug\ConsoleAppExample1.csproj.AssemblyReference.cache
+C:\Users\dilav\OneDrive\Desktop\internship\31.07\missioncontrol\missioncontrol\ConsoleAppExample1\obj\Debug\ConsoleAppExample1.csproj.SuggestedBindingRedirects.cache
+C:\Users\dilav\OneDrive\Desktop\internship\31.07\missioncontrol\missioncontrol\ConsoleAppExample1\obj\Debug\ConsoleAppExample1.csproj.CoreCompileInputs.cache
+C:\Users\dilav\OneDrive\Desktop\internship\31.07\missioncontrol\missioncontrol\ConsoleAppExample1\obj\Debug\ConsoleAppExample1.exe
+C:\Users\dilav\OneDrive\Desktop\internship\31.07\missioncontrol\missioncontrol\ConsoleAppExample1\obj\Debug\ConsoleAppExample1.pdb
