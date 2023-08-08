@@ -150,7 +150,7 @@ public partial class MainWindow : Window
                 {
                     for (int j = (y - 1 < 0 ? 0 : y - 1); j < (y + 2 > 15 ? 15 : y + 2); j++)
                     {
-                        if (map[i][j].open == false)
+                        if (map[i][j].open == false && map[i][j].solid == false)
                         {
                             openNode(map[i][j], node);
                         }
@@ -200,8 +200,9 @@ public partial class MainWindow : Window
          
         public bool first = true;
 
-        
 
+        int row;
+        int column;
         private void ToggleButton_Click(object sender, RoutedEventArgs e)
         {
             if(first) 
@@ -209,11 +210,15 @@ public partial class MainWindow : Window
                 A.initializemap();
                 first = false;
             }
-            ToggleButton togglebutton = (ToggleButton)sender;
-            var row = Grid.GetRow(togglebutton);
-            var column = Grid.GetColumn(togglebutton);
-            A.SetSolid(row, column);
-            togglebutton.Background = Brushes.Red;
+            Dispatcher.Invoke(new Action(() =>
+            {
+                var togglebutton = (ToggleButton)sender;
+                row = Grid.GetRow(togglebutton);
+                column = Grid.GetColumn(togglebutton);
+                A.SetSolid(row, column);
+                togglebutton.Background = Brushes.Red;
+            }));           
+            
             //Git deneme
         }
 
@@ -222,6 +227,7 @@ public partial class MainWindow : Window
             if(first)
             {
                 A.initializemap();
+                first = false;
             }
             Stack<Node> path = new Stack<Node>();
             var startbutton = (Button)sender;
@@ -235,9 +241,10 @@ public partial class MainWindow : Window
 
             path = A.aStar(start, end, start);
             String string_path = " path: ";
-            foreach( Node node in path ) 
+            
+            foreach ( Node node in path ) 
             {
-                string_path += "( " + node.row + ", " + node.column + " )"; 
+                string_path += "( " + node.row + " , " + node.column + " )"; 
             }
             result.Text = string_path;
 

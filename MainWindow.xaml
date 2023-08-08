@@ -379,9 +379,6 @@
                 <ToggleButton Visibility="Visible" Click="ToggleButton_Click" />
 
             </Border>
-            <Border Grid.Column="4" Grid.Row="15" BorderThickness="2" BorderBrush="Black">
-                <ToggleButton Visibility="Visible" Click="ToggleButton_Click" />
-            </Border>
             <Border Grid.Column="5" Grid.Row="0" BorderThickness="2" BorderBrush="Black">
                 <ToggleButton Visibility="Visible" Click="ToggleButton_Click" />
 
@@ -487,9 +484,6 @@
                 <ToggleButton Visibility="Visible" Click="ToggleButton_Click" />
 
             </Border>
-            <Border Grid.Column="6" Grid.Row="15" BorderThickness="2" BorderBrush="Black">
-                <ToggleButton Visibility="Visible" Click="ToggleButton_Click" />
-            </Border>
             <Border Grid.Column="4" Grid.Row="7" BorderThickness="2" BorderBrush="Black">
                 <ToggleButton Visibility="Visible" Click="ToggleButton_Click" />
 
@@ -546,9 +540,6 @@
                 <ToggleButton Visibility="Visible" Click="ToggleButton_Click" />
 
             </Border>
-            <Border Grid.Column="7" Grid.Row="15" BorderThickness="2" BorderBrush="Black">
-                <ToggleButton Visibility="Visible" Click="ToggleButton_Click" />
-            </Border>
             <Border Grid.Column="8" Grid.Row="0" BorderThickness="2" BorderBrush="Black">
                 <ToggleButton Visibility="Visible" Click="ToggleButton_Click" />
             </Border>
@@ -600,9 +591,6 @@
             <Border Grid.Column="8" Grid.Row="14" BorderThickness="2" BorderBrush="Black">
                 <ToggleButton Visibility="Visible" Click="ToggleButton_Click" />
 
-            </Border>
-            <Border Grid.Column="8" Grid.Row="15" BorderThickness="2" BorderBrush="Black">
-                <ToggleButton Visibility="Visible" Click="ToggleButton_Click" />
             </Border>
             <Border Grid.Column="4" Grid.Row="9" BorderThickness="2" BorderBrush="Black">
                 <ToggleButton Visibility="Visible" Click="ToggleButton_Click" />
@@ -660,9 +648,6 @@
                 <ToggleButton Visibility="Visible" Click="ToggleButton_Click" />
 
             </Border>
-            <Border Grid.Column="9" Grid.Row="15" BorderThickness="2" BorderBrush="Black">
-                <ToggleButton Visibility="Visible" Click="ToggleButton_Click" />
-            </Border>
             <Border Grid.Column="4" Grid.Row="10" BorderThickness="2" BorderBrush="Black">
                 <ToggleButton Visibility="Visible" Click="ToggleButton_Click" />
 
@@ -718,9 +703,6 @@
             <Border Grid.Column="10" Grid.Row="14" BorderThickness="2" BorderBrush="Black">
                 <ToggleButton Visibility="Visible" Click="ToggleButton_Click" />
 
-            </Border>
-            <Border Grid.Column="10" Grid.Row="15" BorderThickness="2" BorderBrush="Black">
-                <ToggleButton Visibility="Visible" Click="ToggleButton_Click" />
             </Border>
             <Border Grid.Column="11" Grid.Row="0" BorderThickness="2" BorderBrush="Black">
                 <ToggleButton Visibility="Visible" Click="ToggleButton_Click" />
@@ -879,9 +861,6 @@
                 <ToggleButton Visibility="Visible" Click="ToggleButton_Click" />
 
             </Border>
-            <Border Grid.Column="13" Grid.Row="15" BorderThickness="2" BorderBrush="Black">
-                <ToggleButton Visibility="Visible" Click="ToggleButton_Click" />
-            </Border>
             <Border Grid.Column="14" Grid.Row="0" BorderThickness="2" BorderBrush="Black">
                 <ToggleButton Visibility="Visible" Click="ToggleButton_Click" />
             </Border>
@@ -933,9 +912,6 @@
             <Border Grid.Column="14" Grid.Row="14" BorderThickness="2" BorderBrush="Black">
                 <ToggleButton Visibility="Visible" Click="ToggleButton_Click" />
 
-            </Border>
-            <Border Grid.Column="14" Grid.Row="15" BorderThickness="2" BorderBrush="Black">
-                <ToggleButton Visibility="Visible" Click="ToggleButton_Click" />
             </Border>
 
 
