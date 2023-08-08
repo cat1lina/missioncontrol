@@ -214,7 +214,7 @@ public partial class MainWindow : Window
             var column = Grid.GetColumn(togglebutton);
             A.SetSolid(row, column);
             togglebutton.Background = Brushes.Red;
-            //asdasdasdasdasdasd 
+            //Git deneme
         }
 
         private void Start_Button_Click(object sender, RoutedEventArgs e)
