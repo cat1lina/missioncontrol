@@ -102,6 +102,7 @@ using System.IO;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Program
 {
@@ -130,7 +131,6 @@ namespace Program
         static Node[][] map = new Node[15][];
         class astar
         {
-
             List<Node> opened = new List<Node>();
             List<Node> closed = new List<Node>();
 
@@ -145,8 +145,8 @@ namespace Program
                         map[i][j] = new Node(i, j); // Initialize each node in the row
                     }
                 }
-                map[3][3].solid = true;
-                map[0][1].solid = true;
+                //map[3][3].solid = true;
+                //map[0][1].solid = true;
             }
             public int getCost(Node node, Node start, Node goal)
             {
@@ -246,23 +246,31 @@ namespace Program
             public void aStar(Node start, Node goal, Node curr)
             {
 
+                start.solid = true;
                 calculateCost(start, goal);
                 opened.Add(curr);
 
-                while (opened.Count > 0)
+                for (int i=0; i< opened.Count; i++)
                 {
+                    opened[i].solid = true;
                     curr = getMincost();
+
                     if (curr.row == goal.row && curr.column == goal.column)
                     {
+                        
                         Console.WriteLine("End Reached");
                         back_track(curr);
                         return; // Found the goal, terminate the algorithm
                     }
                     else
                     {
+                        start.solid = false;
+                        opened[i].solid = false;
                         find_neighbours(curr);
                         closeNode(curr);
+                        
                     }
+                    
                 }
 
                 Console.WriteLine("No valid path to the goal.");
@@ -270,26 +278,44 @@ namespace Program
         }
         class Program
         {
+            
 
             static void Main(string[] args)
             {
+
+
                 //Actor 1
                 astar x = new astar();
                 x.initializemap();
                 Node start_node = new Node(0, 0);
-                Node end_node = new Node(2, 4);
+                Node end_node = new Node(4, 4);
                 Node curr_node = start_node;
 
-                x.aStar(start_node, end_node, curr_node);
-
+                void DoWork1()
+                {
+                    x.aStar(start_node, end_node, curr_node);
+                }
                 //Actor 2
                 astar y = new astar();
                 y.initializemap();
-                Node start_node2 = new Node(1, 1);
-                Node end_node2 = new Node(4, 4);
-                Node curr_node2 = start_node;
+                Node start_node2 = new Node(2, 2);
+                Node end_node2 = new Node(5, 5);
+                Node curr_node2 = start_node2;
 
-                y.aStar(start_node2, end_node2, curr_node2);
+                void DoWork2()
+                {
+                    y.aStar(start_node2, end_node2, curr_node2);
+            }
+
+            Thread thread1 = new Thread(DoWork1);
+            Thread thread2 = new Thread(DoWork2);
+
+            thread1.Start();
+                thread2.Start();
+
+                thread1.Join();
+                thread2.Join();
+
 
 
             }
